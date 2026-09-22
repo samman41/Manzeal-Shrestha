@@ -3,59 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Business Card</title>
+    <title>Manzeal Shrestha - Digital Business Card</title>
     
-    <!-- Modern Elegant Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Linked Stylesheet -->
-    <link rel="stylesheet" href="style.css">
-    <!-- FontAwesome for Icons -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ffffff;
+            --bg-color: #121212;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --whatsapp: #25D366;
+            --text-main: #ffffff;
+            --text-muted: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: grid;
+            place-items: center; /* Vertically and horizontally center */
+            padding: 20px; /* Safe padding for mobile scrolling */
+            background-image: url('Image/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* Dark overlay for better contrast */
+        body::before {
+            content: '';
+            position: fixed; /* Use fixed so it covers screen even when scrolling */
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 420px;
+            padding: 40px 20px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            background: rgba(30, 30, 30, 0.55);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px;
+            background: #fff;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .socials a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .socials a:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 5px;
+            background: var(--card-bg);
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 14px;
+            border: 1px solid var(--glass-border);
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .btn i {
+            font-size: 1.2rem;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn-full {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            border-radius: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-full i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp);
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-whatsapp:hover {
+            background: #20b858;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-save {
+            background: var(--primary);
+            color: #000;
+            border: none;
+            margin-top: 10px;
+            margin-bottom: 0;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-save:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Mobile specific adjustments for very small screens */
+        @media (max-width: 360px) {
+            .container {
+                padding: 30px 15px;
+                border-radius: 20px;
+            }
+            .grid-3 {
+                gap: 8px;
+            }
+            .btn {
+                font-size: 0.65rem;
+                padding: 10px 2px;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Background Images -->
-    <div id="background-container"></div>
-    <div id="overlay"></div>
-
-    <!-- Main Content -->
     <div class="container">
-        <!-- Profile Picture -->
-        <div class="profile-picture-container" style="display: flex; justify-content: center; margin-bottom: 20px; animation: fadeInDown 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);">
-            <img id="profile-picture" src="" alt="Profile Picture" style="width: 140px; height: 140px; border-radius: 50%; object-fit: cover; border: 3px solid var(--border-color); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-        </div>
-
-        <div class="profile-info">
-            <h1 id="profile-name"></h1>
-            <div class="divider"></div>
-            <p id="profile-title"></p>
-        </div>
-
+        <!-- Profile Image -->
+        <img src="Image/profile.jpg" alt="Manzeal Shrestha" class="profile-img">
+        
+        <!-- Name -->
+        <h1>MANZEAL SHRESTHA</h1>
+        
         <!-- Social Icons Row -->
-        <div class="socials-row" id="socials-row">
-            <!-- Dynamic Socials -->
+        <div class="socials">
+            <a href="https://www.facebook.com/share/1DoMDH6vNJ/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/manzeal1?stkn=dmF1NzVvMG5nOWhk" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@manzealshrestha2?_r=1&_t=ZS-99vKw0igjtU" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
 
-        <!-- Action Grid (Call, Email, Location) -->
-        <div class="actions-grid" id="actions-grid">
-            <!-- Dynamic Actions -->
-        </div>
-
-        <div class="primary-actions">
-            <a href="#" class="whatsapp-btn" id="whatsapp-btn">
-                <i class="fab fa-whatsapp"></i> WhatsApp Us
+        <!-- 3-Column Action Grid -->
+        <div class="grid-3">
+            <a href="tel:+9779856078478" class="btn">
+                <i class="fas fa-phone-alt"></i> CALL NOW
             </a>
-            <a href="#" class="btn-primary" id="save-contact-btn">
-                <i class="fas fa-user-plus"></i> Save Contact
+            <a href="mailto:sthamanzeal@gmail.com" class="btn">
+                <i class="fas fa-envelope"></i> EMAIL US
+            </a>
+            <a href="https://maps.app.goo.gl/kAYN8UBF11pZ58Ro6" target="_blank" class="btn">
+                <i class="fas fa-map-marker-alt"></i> LOCATION
             </a>
         </div>
 
+        <!-- Website Button -->
+        <a href="https://bhagirathfabrication.com.np/" target="_blank" class="btn btn-full">
+            <i class="fas fa-globe"></i> WEBSITE
+        </a>
+
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/9779802826629" target="_blank" class="btn btn-full btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> WHATSAPP US
+        </a>
+
+        <!-- Save Contact Button -->
+        <button id="save-contact-btn" class="btn btn-full btn-save">
+            <i class="fas fa-user-plus"></i> SAVE CONTACT
+        </button>
     </div>
 
-    <!-- Linked JavaScript -->
-    <script src="script.js?v=1.2"></script>
+    <!-- JavaScript for vCard Generation -->
+    <script>
+        document.getElementById('save-contact-btn').addEventListener('click', function() {
+            // Contact Details
+            const contact = {
+                firstName: "Manzeal",
+                lastName: "Shrestha",
+                phone: "+9779856078478",
+                email: "sthamanzeal@gmail.com",
+                website: "https://bhagirathfabrication.com.np/",
+                whatsapp: "https://wa.me/9779802826629",
+                facebook: "https://www.facebook.com/share/1DoMDH6vNJ/",
+                instagram: "https://www.instagram.com/manzeal1?stkn=dmF1NzVvMG5nOWhk",
+                tiktok: "https://www.tiktok.com/@manzealshrestha2?_r=1&_t=ZS-99vKw0igjtU"
+            };
+
+            // Format vCard 3.0 String with standard CRLF line endings
+            const vcard = [
+                "BEGIN:VCARD",
+                "VERSION:3.0",
+                `N:${contact.lastName};${contact.firstName};;;`,
+                `FN:${contact.firstName} ${contact.lastName}`,
+                `TEL;TYPE=CELL:${contact.phone}`,
+                `EMAIL;TYPE=WORK:${contact.email}`,
+                `URL:${contact.website}`,
+                `X-SOCIALPROFILE;TYPE=whatsapp:${contact.whatsapp}`,
+                `X-SOCIALPROFILE;TYPE=facebook:${contact.facebook}`,
+                `X-SOCIALPROFILE;TYPE=instagram:${contact.instagram}`,
+                `X-SOCIALPROFILE;TYPE=tiktok:${contact.tiktok}`,
+                `NOTE:WhatsApp: ${contact.whatsapp} | Facebook: ${contact.facebook} | Instagram: ${contact.instagram} | TikTok: ${contact.tiktok}`,
+                "END:VCARD"
+            ].join("\\r\\n");
+
+            // Create a Blob with standard vCard MIME type
+            const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+            
+            // Create object URL
+            const url = URL.createObjectURL(blob);
+            
+            // Create hidden anchor to trigger download
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${contact.firstName}_${contact.lastName}_Contact.vcf`;
+            link.style.display = "none";
+            
+            document.body.appendChild(link);
+            link.click();
+            
+            // Cleanup
+            setTimeout(() => {
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }, 100);
+        });
+    </script>
 </body>
 </html>
