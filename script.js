@@ -29,7 +29,7 @@ async function getBase64ImageFromUrl(imageUrl) {
     }
 }
 
-document.getElementById('save-contact-btn').addEventListener('click', async function() {
+document.getElementById('save-contact-btn').addEventListener('click', async function () {
     // Update button state to show loading
     const btn = this;
     const originalText = btn.innerHTML;
@@ -45,7 +45,7 @@ document.getElementById('save-contact-btn').addEventListener('click', async func
         lastName: "Shrestha",
         phone: "+9779856078478",
         email: "sthamanzeal@gmail.com",
-        website: "https://bhagirathfabrication.com.np/",
+        website: "https://manzeal-shrestha.tappooo.workers.dev/",
         whatsapp: "https://wa.me/9779802826629",
         facebook: "https://www.facebook.com/share/1DoMDH6vNJ/",
         instagram: "https://www.instagram.com/manzeal1?stkn=dmF1NzVvMG5nOWhk",
@@ -89,19 +89,19 @@ document.getElementById('save-contact-btn').addEventListener('click', async func
 
     // Create a Blob with standard vCard MIME type
     const blob = new Blob([vcardString], { type: "text/vcard;charset=utf-8" });
-    
+
     // Create object URL
     const url = URL.createObjectURL(blob);
-    
+
     // Create hidden anchor to trigger download
     const link = document.createElement('a');
     link.href = url;
     link.download = `${contact.firstName}_${contact.lastName}_Contact.vcf`;
     link.style.display = "none";
-    
+
     document.body.appendChild(link);
     link.click();
-    
+
     // Cleanup
     setTimeout(() => {
         document.body.removeChild(link);
