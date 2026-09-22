@@ -1,0 +1,206 @@
+        :root {
+            --primary: #ffffff;
+            --bg-color: #121212;
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --whatsapp: #25D366;
+            --text-main: #ffffff;
+            --text-muted: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: grid;
+            place-items: center; /* Vertically and horizontally center */
+            padding: 20px; /* Safe padding for mobile scrolling */
+            background-image: url('image/background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        /* Dark overlay for better contrast */
+        body::before {
+            content: '';
+            position: fixed; /* Use fixed so it covers screen even when scrolling */
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 420px;
+            padding: 40px 20px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            background: rgba(30, 30, 30, 0.55);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px;
+            background: #fff;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .socials a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+
+        .socials a:hover {
+            background: var(--primary);
+            color: #000;
+            transform: translateY(-4px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 5px;
+            background: var(--card-bg);
+            color: var(--text-main);
+            text-decoration: none;
+            border-radius: 14px;
+            border: 1px solid var(--glass-border);
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            gap: 8px;
+            cursor: pointer;
+        }
+        
+        .btn i {
+            font-size: 1.2rem;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .btn-full {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            border-radius: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-full i {
+            margin-right: 12px;
+            font-size: 1.2rem;
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp);
+            color: #fff;
+            border: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .btn-whatsapp:hover {
+            background: #20b858;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-save {
+            background: var(--primary);
+            color: #000;
+            border: none;
+            margin-top: 10px;
+            margin-bottom: 0;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-save:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Mobile specific adjustments for very small screens */
+        @media (max-width: 360px) {
+            .container {
+                padding: 30px 15px;
+                border-radius: 20px;
+            }
+            .grid-3 {
+                gap: 8px;
+            }
+            .btn {
+                font-size: 0.65rem;
+                padding: 10px 2px;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+        }
