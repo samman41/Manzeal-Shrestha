@@ -231,9 +231,9 @@
         
         <!-- Social Icons Row -->
         <div class="socials">
-            <a href="https://www.facebook.com/share/1DoMDH6vNJ/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/manzeal1?stkn=dmF1NzVvMG5nOWhk" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@manzealshrestha2?_r=1&_t=ZS-99vKw0igjtU" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" onclick="openSocial('fb://facewebmodal/f?href=https://www.facebook.com/share/1DoMDH6vNJ/', 'https://www.facebook.com/share/1DoMDH6vNJ/'); return false;" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" onclick="openSocial('instagram://user?username=manzeal1', 'https://www.instagram.com/manzeal1'); return false;" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" onclick="openSocial('tiktok://@manzealshrestha2', 'https://www.tiktok.com/@manzealshrestha2'); return false;" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
         </div>
 
         <!-- 3-Column Action Grid -->
@@ -265,8 +265,19 @@
         </button>
     </div>
 
-    <!-- JavaScript for vCard Generation -->
+    <!-- JavaScript for vCard Generation & Social Links -->
     <script>
+        // Deep linking function for social media apps
+        function openSocial(appScheme, webUrl) {
+            var now = Date.now();
+            setTimeout(function () {
+                if (Date.now() - now < 600) {
+                    window.open(webUrl, '_blank');
+                }
+            }, 500);
+            window.location.href = appScheme;
+        }
+
         document.getElementById('save-contact-btn').addEventListener('click', function() {
             // Contact Details
             const contact = {
@@ -296,7 +307,7 @@
                 `X-SOCIALPROFILE;TYPE=tiktok:${contact.tiktok}`,
                 `NOTE:WhatsApp: ${contact.whatsapp} | Facebook: ${contact.facebook} | Instagram: ${contact.instagram} | TikTok: ${contact.tiktok}`,
                 "END:VCARD"
-            ].join("\\r\\n");
+            ].join("\r\n");
 
             // Create a Blob with standard vCard MIME type
             const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
